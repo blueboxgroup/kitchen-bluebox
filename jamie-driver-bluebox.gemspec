@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jamie-driver-bluebox/version'
+require 'jamie/driver/bluebox_version'
 
 Gem::Specification.new do |gem|
   gem.name          = "jamie-driver-bluebox"
