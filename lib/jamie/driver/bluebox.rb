@@ -18,7 +18,7 @@ module Jamie
       default_config 'username',    'jamie'
       default_config 'port',        '22'
 
-      def perform_create(instance, state)
+      def create(instance, state)
         server = create_server(instance)
         state['block_id'] = server.id
         state['hostname'] = server.ips.first['address']
@@ -32,7 +32,7 @@ module Jamie
         raise ActionFailed, ex.message
       end
 
-      def perform_destroy(instance, state)
+      def destroy(instance, state)
         return if state['block_id'].nil?
 
         connection.destroy_block(state['block_id'])
