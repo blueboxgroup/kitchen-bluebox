@@ -25,7 +25,7 @@ module Jamie
 
         elapsed = Benchmark.measure do
           server.wait_for { print "."; ready? } ; print "(server ready)"
-          wait_for_sshd(state['hostname'])      ; print "(ssh read)\n"
+          wait_for_sshd(state['hostname'])      ; print "(ssh ready)\n"
         end
         puts "       Created #{instance.name} in #{elapsed.real} seconds."
       rescue Fog::Errors::Error, Excon::Errors::Error => ex
