@@ -6,7 +6,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'jamie-driver-bluebox'
+    gem 'jamie-bluebox'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install jamie-driver-bluebox
+    $ gem install jamie-bluebox
 
 ## Usage
 
