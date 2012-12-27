@@ -4,13 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'jamie/driver/bluebox_version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "jamie-driver-bluebox"
+  gem.name          = "jamie-bluebox"
   gem.version       = Jamie::Driver::BLUEBOX_VERSION
   gem.authors       = ["Fletcher Nichol"]
   gem.email         = ["fnichol@nichol.ca"]
-  gem.description   = %q{A Blue Box block API driver for Jamie}
+  gem.description   =
+    %q{Jamie::Driver::Bluebox - A Blue Box block API driver for Jamie}
   gem.summary       = gem.description
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/jamie-ci/jamie-bluebox"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = []
