@@ -1,7 +1,7 @@
 # Jamie::Driver::Bluebox
 
-[![Build Status](https://secure.travis-ci.org/jamie-ci/jamie-vagrant.png)](https://travis-ci.org/jamie-ci/jamie-vagrant)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jamie-ci/jamie-vagrant)
+[![Build Status](https://secure.travis-ci.org/jamie-ci/jamie-bluebox.png)](https://travis-ci.org/jamie-ci/jamie-bluebox)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jamie-ci/jamie-bluebox)
 
 TODO: Write a gem description
 
