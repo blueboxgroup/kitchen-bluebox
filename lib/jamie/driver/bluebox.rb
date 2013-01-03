@@ -41,12 +41,9 @@ module Jamie
         state['block_id'] = server.id
         state['hostname'] = server.ips.first['address']
 
-        elapsed = Benchmark.measure do
-          server.wait_for { print "."; ready? } ; print "(server ready)"
-          wait_for_sshd(state['hostname'])      ; print "(ssh ready)\n"
-        end
-        info("Created #{instance.name} (#{server.id})" +
-          " in #{elapsed.real} seconds.")
+        info("Blocks instance <#{state['block_id']}> created.")
+        server.wait_for { print "."; ready? } ; print "(server ready)"
+        wait_for_sshd(state['hostname'])      ; print "(ssh ready)\n"
       rescue Fog::Errors::Error, Excon::Errors::Error => ex
         raise ActionFailed, ex.message
       end
@@ -55,6 +52,7 @@ module Jamie
         return if state['block_id'].nil?
 
         connection.destroy_block(state['block_id'])
+        info("Blocks instance <#{state['block_id']}> destroyed.")
         state.delete('block_id')
         state.delete('hostname')
       rescue Fog::Errors::Error, Excon::Errors::Error => ex
