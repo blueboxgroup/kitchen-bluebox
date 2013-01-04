@@ -70,14 +70,19 @@ module Jamie
       end
 
       def create_server
-        connection.servers.create(
+        opts = {
           :flavor_id    => config['flavor_id'],
           :image_id     => config['image_id'],
           :location_id  => config['location_id'],
           :hostname     => instance.name,
           :username     => config['username'],
-          :password     => config['password'],
-        )
+          :password     => config['password'] || "",
+        }
+        if config['ssh_public_key'] && File.exists?(config['ssh_public_key'])
+          opts[:public_key] = IO.read(config['ssh_public_key'])
+        end
+
+        connection.servers.create(opts)
       end
     end
   end
