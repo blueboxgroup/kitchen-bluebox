@@ -30,31 +30,31 @@ module Jamie
     # @author Fletcher Nichol <fnichol@nichol.ca>
     class Bluebox < Jamie::Driver::SSHBase
 
-      default_config 'flavor_id',   '94fd37a7-2606-47f7-84d5-9000deda52ae'
-      default_config 'image_id',    '573b8e80-823f-4100-bc2c-51b7c60f633c'
-      default_config 'location_id', '37c2bd9a-3e81-46c9-b6e2-db44a25cc675'
-      default_config 'username',    'jamie'
-      default_config 'port',        '22'
+      default_config :flavor_id,    '94fd37a7-2606-47f7-84d5-9000deda52ae'
+      default_config :image_id,     '573b8e80-823f-4100-bc2c-51b7c60f633c'
+      default_config :location_id,  '37c2bd9a-3e81-46c9-b6e2-db44a25cc675'
+      default_config :username,     'jamie'
+      default_config :port,         '22'
 
       def create(state)
         server = create_server
-        state['block_id'] = server.id
-        state['hostname'] = server.ips.first['address']
+        state[:block_id] = server.id
+        state[:hostname] = server.ips.first['address']
 
-        info("Blocks instance <#{state['block_id']}> created.")
+        info("Blocks instance <#{state[:block_id]}> created.")
         server.wait_for { print "."; ready? } ; print "(server ready)"
-        wait_for_sshd(state['hostname'])      ; print "(ssh ready)\n"
+        wait_for_sshd(state[:hostname])       ; print "(ssh ready)\n"
       rescue Fog::Errors::Error, Excon::Errors::Error => ex
         raise ActionFailed, ex.message
       end
 
       def destroy(state)
-        return if state['block_id'].nil?
+        return if state[:block_id].nil?
 
-        connection.destroy_block(state['block_id'])
-        info("Blocks instance <#{state['block_id']}> destroyed.")
-        state.delete('block_id')
-        state.delete('hostname')
+        connection.destroy_block(state[:block_id])
+        info("Blocks instance <#{state[:block_id]}> destroyed.")
+        state.delete(:block_id)
+        state.delete(:hostname)
       rescue Fog::Errors::Error, Excon::Errors::Error => ex
         raise ActionFailed, ex.message
       end
@@ -64,22 +64,22 @@ module Jamie
       def connection
         Fog::Compute.new(
           :provider             => :bluebox,
-          :bluebox_customer_id  => config['bluebox_customer_id'],
-          :bluebox_api_key      => config['bluebox_api_key'],
+          :bluebox_customer_id  => config[:bluebox_customer_id],
+          :bluebox_api_key      => config[:bluebox_api_key],
         )
       end
 
       def create_server
         opts = {
-          :flavor_id    => config['flavor_id'],
-          :image_id     => config['image_id'],
-          :location_id  => config['location_id'],
+          :flavor_id    => config[:flavor_id],
+          :image_id     => config[:image_id],
+          :location_id  => config[:location_id],
           :hostname     => instance.name,
-          :username     => config['username'],
-          :password     => config['password'] || "",
+          :username     => config[:username],
+          :password     => config[:password] || "",
         }
-        if config['ssh_public_key'] && File.exists?(config['ssh_public_key'])
-          opts[:public_key] = IO.read(config['ssh_public_key'])
+        if config[:ssh_public_key] && File.exists?(config[:ssh_public_key])
+          opts[:public_key] = IO.read(config[:ssh_public_key])
         end
 
         connection.servers.create(opts)
