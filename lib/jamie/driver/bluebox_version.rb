@@ -20,6 +20,6 @@ module Jamie
 
   module Driver
 
-    BLUEBOX_VERSION = "0.2.1"
+    BLUEBOX_VERSION = "0.3.0"
   end
 end
