@@ -36,6 +36,9 @@ module Jamie
       default_config :username,     'jamie'
       default_config :port,         '22'
 
+      required_config :bluebox_customer_id
+      required_config :bluebox_api_key
+
       def create(state)
         server = create_server
         state[:block_id] = server.id
