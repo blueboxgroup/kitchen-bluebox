@@ -19,21 +19,21 @@
 require 'benchmark'
 require 'fog'
 
-require 'jamie'
+require 'kitchen'
 
-module Jamie
+module Kitchen
 
   module Driver
 
-    # Blue Box blocks API driver for Jamie.
+    # Blue Box blocks API driver for Test Kitchen.
     #
     # @author Fletcher Nichol <fnichol@nichol.ca>
-    class Bluebox < Jamie::Driver::SSHBase
+    class Bluebox < Kitchen::Driver::SSHBase
 
       default_config :flavor_id,    '94fd37a7-2606-47f7-84d5-9000deda52ae'
       default_config :image_id,     '573b8e80-823f-4100-bc2c-51b7c60f633c'
       default_config :location_id,  '37c2bd9a-3e81-46c9-b6e2-db44a25cc675'
-      default_config :username,     'jamie'
+      default_config :username,     'kitchen'
       default_config :port,         '22'
 
       required_config :bluebox_customer_id

@@ -1,7 +1,7 @@
-# Jamie::Driver::Bluebox
+# Kitchen::Driver::Bluebox
 
-[![Build Status](https://secure.travis-ci.org/jamie-ci/jamie-bluebox.png)](https://travis-ci.org/jamie-ci/jamie-bluebox)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jamie-ci/jamie-bluebox)
+[![Build Status](https://secure.travis-ci.org/blueboxgroup/kitchen-bluebox.png)](https://travis-ci.org/blueboxgroup/kitchen-bluebox)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/blueboxgroup/kitchen-bluebox)
 
 TODO: Write a gem description
 
@@ -9,7 +9,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'jamie-bluebox'
+    gem 'kitchen-bluebox'
 
 And then execute:
 
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install jamie-bluebox
+    $ gem install kitchen-bluebox
 
 ## Usage
 
