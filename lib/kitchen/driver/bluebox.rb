@@ -79,10 +79,12 @@ module Kitchen
           :location_id  => config[:location_id],
           :hostname     => instance.name,
           :username     => config[:username],
-          :password     => config[:password] || "",
         }
+        if config[:password]
+          opts[:password] = config[:password]
+        end
         if config[:ssh_public_key] && File.exists?(config[:ssh_public_key])
-          opts[:public_key] = IO.read(config[:ssh_public_key])
+          opts[:ssh_public_key] = IO.read(config[:ssh_public_key])
         end
 
         connection.servers.create(opts)
