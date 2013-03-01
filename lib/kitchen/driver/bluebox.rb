@@ -84,7 +84,7 @@ module Kitchen
           opts[:password] = config[:password]
         end
         if config[:ssh_public_key] && File.exists?(config[:ssh_public_key])
-          opts[:ssh_public_key] = IO.read(config[:ssh_public_key])
+          opts[:public_key] = IO.read(config[:ssh_public_key])
         end
 
         connection.servers.create(opts)
