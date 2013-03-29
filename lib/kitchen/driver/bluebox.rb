@@ -55,9 +55,9 @@ module Kitchen
         return if state[:block_id].nil?
 
         connection.destroy_block(state[:block_id])
-        info("Blocks instance <#{state[:block_id]}> destroyed.")
-        state.delete(:block_id)
-        state.delete(:hostname)
+        update_state_for_destroy(state)
+      rescue Fog::Compute::Bluebox::NotFound
+        update_state_for_destroy(state)
       rescue Fog::Errors::Error, Excon::Errors::Error => ex
         raise ActionFailed, ex.message
       end
@@ -89,6 +89,13 @@ module Kitchen
 
         connection.servers.create(opts)
       end
+
+      def update_state_for_destroy(state)
+        info("Blocks instance <#{state[:block_id]}> destroyed.")
+        state.delete(:block_id)
+        state.delete(:hostname)                
+      end              
+      
     end
   end
 end
