@@ -93,9 +93,9 @@ module Kitchen
       def update_state_for_destroy(state)
         info("Blocks instance <#{state[:block_id]}> destroyed.")
         state.delete(:block_id)
-        state.delete(:hostname)                
-      end              
-      
+        state.delete(:hostname)
+      end
+
     end
   end
 end
