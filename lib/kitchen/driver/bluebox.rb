@@ -34,7 +34,6 @@ module Kitchen
       default_config :image_id,     '573b8e80-823f-4100-bc2c-51b7c60f633c'
       default_config :location_id,  '37c2bd9a-3e81-46c9-b6e2-db44a25cc675'
       default_config :username,     'kitchen'
-      default_config :port,         '22'
 
       required_config :bluebox_customer_id
       required_config :bluebox_api_key
