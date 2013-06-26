@@ -94,7 +94,6 @@ module Kitchen
         state.delete(:block_id)
         state.delete(:hostname)
       end
-
     end
   end
 end
