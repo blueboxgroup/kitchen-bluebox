@@ -20,6 +20,6 @@ module Kitchen
 
   module Driver
 
-    BLUEBOX_VERSION = "0.6.0"
+    BLUEBOX_VERSION = "0.6.1.dev"
   end
 end
