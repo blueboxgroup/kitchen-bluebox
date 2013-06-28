@@ -1,3 +1,10 @@
+## 0.6.1 / 2013-06-28
+
+### Bug fixes
+
+* Depend on Test Kitchen greater than 1.0.0.alpha.7. (@fnichol)
+
+
 ## 0.6.0 / 2013-06-28
 
 ### Bug fixes
