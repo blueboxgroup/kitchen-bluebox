@@ -177,3 +177,4 @@ Apache 2.0 (see [LICENSE][license])
 
 [bbg_site]:         https://bluebox.net/
 [blocks_docs]:      https://boxpanel.bluebox.net/public/the_vault/index.php/Blocks_API
+[fog_gem]:          http://fog.io/
