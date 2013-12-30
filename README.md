@@ -75,25 +75,24 @@ to override default configuration.
 
 ```yaml
 ---
-driver_plugin: bluebox
-driver_config:
+driver:
+  name: bluebox
   bluebox_customer_id: 123...
   bluebox_api_key: abc...
   location_id: def789...
   ssh_public_key: /path/to/id_dsa.pub
   ssh_key: /path/to/id_dsa
-  require_chef_omnibus: true
 
 platforms:
-- name: ubuntu-12.04
-  driver_config:
-    image_id: b137c423-bade-4b01-9d13-271eea552563
-- name: scientific-6.3
-  driver_config:
-    image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
+  - name: ubuntu-12.04
+    driver:
+      image_id: b137c423-bade-4b01-9d13-271eea552563
+  - name: scientific-6.3
+    driver:
+      image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
 
 suites:
-# ...
+  - name: default
 ```
 
 Both `.kitchen.yml` and `.kitchen.local.yml` files are pre-processed through
@@ -101,24 +100,23 @@ ERB which can help to factor out secrets and credentials. For example:
 
 ```yaml
 ---
-driver_plugin: bluebox
-driver_config:
+driver:
+  name: bluebox
   bluebox_customer_id: <%= ENV['BLUEBOX_CUSTOMER_ID'] %>
   bluebox_api_key: <%= ENV['BLUEBOX_API_KEY'] %>
   ssh_public_key: <%= File.expand_path('~/.ssh/id_dsa.pub') %>
   ssh_key: <%= File.expand_path('~/.ssh/id_dsa') %>
-  require_chef_omnibus: true
 
 platforms:
-- name: ubuntu-12.04
-  driver_config:
-    image_id: b137c423-bade-4b01-9d13-271eea552563
-- name: scientific-6.3
-  driver_config:
-    image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
+  - name: ubuntu-12.04
+    driver:
+      image_id: b137c423-bade-4b01-9d13-271eea552563
+  - name: scientific-6.3
+    driver:
+      image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
 
 suites:
-# ...
+  - name: default
 ```
 
 ## <a name="development"></a> Development
