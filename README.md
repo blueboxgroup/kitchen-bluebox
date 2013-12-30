@@ -136,7 +136,7 @@ example:
 
 ## <a name="authors"></a> Authors
 
-Created and maintained by [Fletcher Nichol][author] (<fnichol@nichol.ca>)
+Created by [Fletcher Nichol][author] (<fnichol@nichol.ca>) and maintained by [Blue Box Group][bbg_site]
 
 ## <a name="license"></a> License
 
