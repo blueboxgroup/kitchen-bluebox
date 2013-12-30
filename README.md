@@ -62,13 +62,6 @@ Path to the private SSH key used to connect to the instance.
 
 The default is unset, or `nil`.
 
-### <a name="config-sudo"></a> sudo
-
-Whether or not to prefix remote system commands such as installing and
-running Chef with `sudo`.
-
-The default is `true`.
-
 ### <a name="config-username"></a> username
 
 The SSH username that will be used to communicate with the instance.
