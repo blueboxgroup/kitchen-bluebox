@@ -56,34 +56,11 @@ The SSH port number to be used when communicating with the instance.
 
 The default is `22`.
 
-### <a name="config-require-chef-omnibus"></a> require\_chef\_omnibus
-
-Determines whether or not a Chef [Omnibus package][chef_omnibus_dl] will be
-installed. There are several different behaviors available:
-
-* `true` - the latest release will be installed. Subsequent converges
-  will skip re-installing if chef is present.
-* `latest` - the latest release will be installed. Subsequent converges
-  will always re-install even if chef is present.
-* `<VERSION_STRING>` (ex: `10.24.0`) - the desired version string will
-  be passed the the install.sh script. Subsequent converges will skip if
-  the installed version and the desired version match.
-* `false` or `nil` - no chef is installed.
-
-The default value is unset, or `nil`.
-
 ### <a name="config-ssh-key"></a> ssh\_key
 
 Path to the private SSH key used to connect to the instance.
 
 The default is unset, or `nil`.
-
-### <a name="config-sudo"></a> sudo
-
-Whether or not to prefix remote system commands such as installing and
-running Chef with `sudo`.
-
-The default is `true`.
 
 ### <a name="config-username"></a> username
 
@@ -98,25 +75,24 @@ to override default configuration.
 
 ```yaml
 ---
-driver_plugin: bluebox
-driver_config:
+driver:
+  name: bluebox
   bluebox_customer_id: 123...
   bluebox_api_key: abc...
   location_id: def789...
   ssh_public_key: /path/to/id_dsa.pub
   ssh_key: /path/to/id_dsa
-  require_chef_omnibus: true
 
 platforms:
-- name: ubuntu-12.04
-  driver_config:
-    image_id: b137c423-bade-4b01-9d13-271eea552563
-- name: scientific-6.3
-  driver_config:
-    image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
+  - name: ubuntu-12.04
+    driver:
+      image_id: b137c423-bade-4b01-9d13-271eea552563
+  - name: scientific-6.3
+    driver:
+      image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
 
 suites:
-# ...
+  - name: default
 ```
 
 Both `.kitchen.yml` and `.kitchen.local.yml` files are pre-processed through
@@ -124,24 +100,23 @@ ERB which can help to factor out secrets and credentials. For example:
 
 ```yaml
 ---
-driver_plugin: bluebox
-driver_config:
+driver:
+  name: bluebox
   bluebox_customer_id: <%= ENV['BLUEBOX_CUSTOMER_ID'] %>
   bluebox_api_key: <%= ENV['BLUEBOX_API_KEY'] %>
   ssh_public_key: <%= File.expand_path('~/.ssh/id_dsa.pub') %>
   ssh_key: <%= File.expand_path('~/.ssh/id_dsa') %>
-  require_chef_omnibus: true
 
 platforms:
-- name: ubuntu-12.04
-  driver_config:
-    image_id: b137c423-bade-4b01-9d13-271eea552563
-- name: scientific-6.3
-  driver_config:
-    image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
+  - name: ubuntu-12.04
+    driver:
+      image_id: b137c423-bade-4b01-9d13-271eea552563
+  - name: scientific-6.3
+    driver:
+      image_id: caaaca6b-fbe0-4e27-af2b-d100e46767bd
 
 suites:
-# ...
+  - name: default
 ```
 
 ## <a name="development"></a> Development
@@ -161,7 +136,7 @@ example:
 
 ## <a name="authors"></a> Authors
 
-Created and maintained by [Fletcher Nichol][author] (<fnichol@nichol.ca>)
+Created by [Fletcher Nichol][author] (<fnichol@nichol.ca>) and maintained by [Blue Box Group][bbg_site]
 
 ## <a name="license"></a> License
 
@@ -177,3 +152,4 @@ Apache 2.0 (see [LICENSE][license])
 
 [bbg_site]:         https://bluebox.net/
 [blocks_docs]:      https://boxpanel.bluebox.net/public/the_vault/index.php/Blocks_API
+[fog_gem]:          http://fog.io/
